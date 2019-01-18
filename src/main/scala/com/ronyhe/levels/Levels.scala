@@ -72,7 +72,7 @@ trait Levels {
     *
     * @param op      the operator (usually a symbol like "+" or "-")
     * @param combine a function that combines each next level expression with the previous results
-    * @tparam A the value the parses eventually produces
+    * @tparam A the value the parser eventually produces
     */
   def leftAssociativeNextLevel[A](op: Parser[Any], combine: (A, A) => A): LevelCreator[A] =
     (_, next) => chainl1(next, op ~> next, success(combine))
@@ -84,7 +84,7 @@ trait Levels {
     *
     * @param op      the operator (usually a symbol like "+" or "-")
     * @param combine a function that combines each next level expression with the previous results
-    * @tparam A the value the parses eventually produces
+    * @tparam A the value the parser eventually produces
     */
   def rightAssociativeNextLevel[A](op: Parser[Any], combine: (A, A) => A): LevelCreator[A] = {
     // If only one element is parsed, we should just return it.
