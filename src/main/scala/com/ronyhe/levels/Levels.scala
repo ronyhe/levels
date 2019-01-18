@@ -84,10 +84,9 @@ trait Levels {
     *
     * @param op      the operator (usually a symbol like "+" or "-")
     * @param combine a function that combines each next level expression with the previous results
-    * @param seed    an initial value (the right most value)
     * @tparam A the value the parses eventually produces
     */
-  def rightAssociativeNextLevel[A](op: Parser[Any], combine: (A, A) => A, seed: A): LevelCreator[A] = {
+  def rightAssociativeNextLevel[A](op: Parser[Any], combine: (A, A) => A): LevelCreator[A] = {
     // If only one element is parsed, we should just return it.
     // That won't happen with a direct call to chainr1 which would return the single value combined with the seed.
     // So, we first parse a list and then reduce it (instead of folding)

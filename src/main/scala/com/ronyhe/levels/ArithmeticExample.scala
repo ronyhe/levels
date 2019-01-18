@@ -16,7 +16,7 @@ class ArithmeticExample extends RegexParsers with Levels {
     leftAssociativeNextLevel("-", Subtraction),
     leftAssociativeNextLevel("*", Multiplication),
     leftAssociativeNextLevel("/", Division),
-    rightAssociativeNextLevel("^", Exponentiation, Number(1)),
+    rightAssociativeNextLevel("^", Exponentiation),
     orNext(integer),
     parens
   ))
